@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:/www.thymleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home Page</title>
+</head>
+<body>
+	<div class="userpage">
+		<section>
+			<div class="card user_input">
+				<div class="card-body my-5">
+
+					<h1 class="text-center mt-3 text-secondary font-weight-light">Home
+						Page</h1>
+
+					<div th:if="${session.message}"
+						th:classappend="${'alert-'+session.message.type}"
+						class="alert text-center" role="alert">
+						<p th:text="${session.message.content}"></p>
+						<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block>  -->
+					</div>
+
+					<div class="container text-center mt-3">
+						<img src="" style="height: 200px; width: 200px;"
+							th:src="@{'/img/'+${user.imageUrl}}" alt="" />
+					</div>
+
+
+					<div class="conntainer-fluid mt-1">
+						<div class="row">
+							<div class="col-md-10 offset-md-1"></div>
+							<button class="btn btn-success btn-lg text-white mt-3">
+								<a th:href="@{/smartContactManager/user/add-contact}"
+									class="nav-link active" href="#"> ADD NEW CONTACT</a>
+							</button>
+							<button class="btn btn-danger btn-lg text-white mt-3">
+								<a th:href="@{/smartContactManager/user/change-password}"
+									class="nav-link active" href="#"> CHANGE PASSWORD</a>
+							</button>
+							<button class="btn btn-warning btn-lg text-white mt-3">
+								<a th:href="@{/smartContactManager/user/add-contact}"
+									class="nav-link active" href="#"> UPDATE DETAILS</a>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>
+<!-- 
+
+<h1>Welcome to your private dashboard</h1>
+		<h1>
+			UserName: <span th:text="${user.name}"></span>
+		</h1>
+		<h1>
+			User Email: <span th:text="${user.email}"></span>
+		</h1>
+		<h1>
+			<a href="" th:href="@{/logout}">Log Out</a>
+		</h1>
+
+ -->

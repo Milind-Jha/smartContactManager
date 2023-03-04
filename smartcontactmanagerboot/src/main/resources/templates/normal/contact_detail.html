@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:/www.thymleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home Page</title>
+</head>
+<body>
+	<div class="userpage">
+		<section>
+			<div class="card user_input">
+				<div class="card-body" th:if="${contact}">
+
+					<h1 class="text-center mt-1">Contact Details</h1>
+					<div th:if="${session.message}"
+						th:classappend="${'alert-'+session.message.type}"
+						class="alert text-center" role="alert">
+						<p th:text="${session.message.content}"></p>
+						<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block>  -->
+					</div>
+
+					<div class="conntainer-fluid mt-1">
+						<div class="row">
+							<div class="col-md-10 offset-md-1">
+								<h2>
+									NAME : <span th:text="${contact.name}"></span>
+								</h2>
+								<h2>
+									NICK : <span th:text="${contact.nick}"></span>
+								</h2>
+								<h2>
+									OCCUPATION : <span th:text="${contact.occupation}"></span>
+								</h2>
+								<h2>
+									NUMBER : <span th:text="${contact.phone}"></span>
+								</h2>
+								<h2>
+									EMIAL : <span th:text="${contact.email}"></span>
+								</h2>
+								<div class="text-center">
+									<h2>Details</h2>
+									<h5 th:text="${contact.description}"></h5>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div th:unless="${contact}"
+					class="conntainer-fluid mt-4 p-3 text-center bg-danger">
+					<h2 class="text-white">You do not have permission to see this
+						contact.</h2>
+				</div>
+
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

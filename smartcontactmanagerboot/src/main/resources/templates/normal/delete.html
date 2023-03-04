@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:/www.thymleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home Page</title>
+</head>
+<body>
+	<div class="userpage">
+		<section>
+			<div class="card user_input">
+				<div class="card-body">
+
+					<h1 class="text-center text-white mt-1 bg-danger">Attention!</h1>
+
+					<div class="conntainer-fluid mt-1 text-center bg-danger">
+						<div class="row">
+							<div class="col-md-10 offset-md-1">
+								<h2 class="text-white">You do not have permission to delete this contact.</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

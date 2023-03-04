@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:/www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home Page</title>
+</head>
+<body>
+	<section class="signupbanner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card">
+						<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center"role="alert">
+						<p th:text="${session.message.content}"></p>
+						<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+					</div>
+					<div class="container text-center">
+						<img class="" style="width:200px;" alt="" th:src="@{/img/signup.png}" src="">
+					</div> 	
+						<form action="" th:action="@{/smartContactManager/register}" method="post" th:object="${user}">
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Your
+										Name: </label> <input type="text" class="form-control" id="name_feild"
+										aria-describedby="emailHelp" placeholder="Enter Name Here" name="name"
+										th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}" required="required">
+									<div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>	
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputEmail1" class="form-label">Your
+										Email: </label> <input type="email" class="form-control"
+										id="email_feild" name="email" aria-describedby="emailHelp"
+										placeholder="Enter Mail Here" required="required">
+								</div>
+								<div class="mb-3">
+									<label for="exampleInputPassword1" class="form-label">Password:</label>
+									<input type="password" class="form-control"
+										placeholder="Enter Password Here" required="required"
+										id="password_feild" name="password">
+								</div>
+
+								<div class="form-group">
+									<label for="exampleInputPassword1" class="form-label">Enter
+										something about yourself:</label>
+									<textarea name="about" placeholder="Enter something about yourself" 
+										rows="10" class="form-control"></textarea>
+								</div>
+
+
+								<div class="form-group form-check">
+									<input type="checkbox" class="form-check-input"
+										id="agreement" name="agreement"> <label class="form-check-label"
+										for="agreement">I agree to the terms and conditions.</label>
+								</div>
+								<div class="container text-center">
+									<button type="submit" class="btn btn-primary btn-lg text-white">Submit</button>
+									
+									<button type="reset" class="btn btn-warning text-white btn-lg">Reset</button>
+									<button class="btn btn-success btn-lg text-white"><a th:href="@{/smartContactManager/login}" class="nav-link active" href="#">Already signed up Login</a></button>
+								</div>
+
+							</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
